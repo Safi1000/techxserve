@@ -54,7 +54,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
 
             {/* ── Left: Text ── */}
-            <div className="ml-[85px]">
+            <div className="ml-0 sm:ml-[85px]">
               <AnimatedSection delay={0}>
                 <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-brand-red/15 badge-shimmer mb-8">
                   <span className="red-dot" />
@@ -65,7 +65,7 @@ export default function HomePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={80}>
-                <h1 className="text-[56px] sm:text-[68px] md:text-[76px] font-black text-charcoal leading-[0.95] tracking-[-2px] mb-6">
+                <h1 className="text-[38px] sm:text-[56px] md:text-[68px] lg:text-[76px] font-black text-charcoal leading-[0.95] tracking-[-2px] mb-6">
                   Tomorrow&apos;s<br />
                   <span className="gradient-text">Reality,</span><br />
                   Today.
@@ -158,7 +158,7 @@ export default function HomePage() {
         {/* ── Trusted By carousel (in hero) ── */}
         <div className="relative z-10 w-full border-t border-border-gray/60 mt-6 pt-8 pb-10 overflow-hidden bg-white/50 backdrop-blur-sm">
           <div className="max-w-[1280px] mx-auto px-6 mb-5 flex items-center gap-4">
-            <div className="ml-[85px] w-full flex items-center gap-4">
+            <div className="ml-0 sm:ml-[85px] w-full flex items-center gap-4">
 
             <div className="h-px flex-1 bg-border-gray" />
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-charcoal whitespace-nowrap">
@@ -168,7 +168,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="ml-[85px]">
+          <div className="ml-0 sm:ml-[85px]">
             <LogoCarousel />
           </div>
 
@@ -180,7 +180,7 @@ export default function HomePage() {
       ══════════════════════════════════ */}
       <section className="py-24 bg-off-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <div className="ml-[85px]">
+          <div className="ml-0 sm:ml-[85px]">
 
           <AnimatedSection className="mb-14">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -257,9 +257,9 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-brand-red/60 to-transparent" />
 
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <div className="ml-[85px]">
+          <div className="ml-0 sm:ml-[85px]">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-[#222]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-[#222]">
             {stats.map((s, i) => (
               <AnimatedSection key={s.label} delay={i * 90} className="flex flex-col items-start text-left px-4 md:px-12">
                 <div className="w-10 h-10 rounded-xl bg-brand-red/12 flex items-center justify-center mb-4">
@@ -288,7 +288,7 @@ export default function HomePage() {
       ══════════════════════════════════ */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <div className="ml-[85px]">
+          <div className="ml-0 sm:ml-[85px]">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 

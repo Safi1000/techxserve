@@ -6,13 +6,34 @@ import { CheckCircle } from "lucide-react";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+    setError("");
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: fd.get("fullName"),
+          email: fd.get("email"),
+          phone: fd.get("phone"),
+          company: fd.get("company"),
+          service: fd.get("service"),
+          budget: fd.get("budget"),
+          message: fd.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -23,7 +44,7 @@ export default function ContactForm() {
         </div>
         <h3 className="text-xl font-bold text-charcoal">Message Sent!</h3>
         <p className="text-mid-gray">
-          Thanks! We&apos;ll be in touch within one business day.
+          Thanks! Check your inbox — we&apos;ll be in touch within one business day.
         </p>
       </div>
     );
@@ -133,6 +154,8 @@ export default function ContactForm() {
           className="px-4 py-3 rounded-xl border border-border-gray bg-off-white text-sm text-charcoal placeholder-mid-gray focus:outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/10 transition-all resize-none"
         />
       </div>
+
+      {error && <p className="text-xs text-red-500">{error}</p>}
 
       <button
         type="submit"

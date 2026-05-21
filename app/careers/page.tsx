@@ -41,7 +41,7 @@ export default function CareersPage() {
         <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
         <div className="absolute top-16 right-[6%] w-72 h-72 bg-brand-red/5 blob rounded-full pointer-events-none" />
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="max-w-3xl ml-[85px]">
+          <AnimatedSection className="max-w-3xl ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-5">Join Us</p>
             <h1 className="text-[58px] sm:text-[72px] font-black text-charcoal leading-[0.92] tracking-[-2px] mb-7">
               Build the Future<br /><span className="gradient-text">With Us.</span>
@@ -57,7 +57,7 @@ export default function CareersPage() {
       {/* ── Culture ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-14 ml-[85px]">
+          <AnimatedSection className="mb-14 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Culture</p>
             <h2 className="text-4xl font-black text-charcoal tracking-tight">Life at TechxServe</h2>
           </AnimatedSection>
@@ -80,7 +80,7 @@ export default function CareersPage() {
       {/* ── Open Positions ── */}
       <section className="py-24 bg-off-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-12 ml-[85px]">
+          <AnimatedSection className="mb-12 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Positions</p>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <h2 className="text-4xl font-black text-charcoal tracking-tight">Open Roles</h2>
@@ -107,7 +107,9 @@ export default function CareersPage() {
               We hire for talent, not just titles. Reach out and tell us what you&apos;re great at.
             </p>
             <a
-              href="mailto:careers@techxserve.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=techxserve@gmail.com&su=CV%20Submission%20%E2%80%94%20TechxServe&body=Hi%20TechxServe%20Team%2C%0A%0APlease%20find%20my%20CV%20attached.%0A%0AName%3A%20%0ARole%20of%20Interest%3A%20%0A"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-glow inline-flex items-center gap-2 px-7 py-3.5 bg-brand-red text-white font-bold rounded-xl text-sm shadow-[var(--shadow-red)] hover:bg-brand-red-dark transition-all hover:-translate-y-0.5"
             >
               Send Us Your CV

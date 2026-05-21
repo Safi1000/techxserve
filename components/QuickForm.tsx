@@ -6,13 +6,32 @@ import { CheckCircle } from "lucide-react";
 export default function QuickForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setLoading(false);
-    setSubmitted(true);
+    setError("");
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: fd.get("fullName"),
+          email: fd.get("email"),
+          company: fd.get("company"),
+          service: fd.get("service"),
+          message: fd.get("message") || `Service interest: ${fd.get("service")}`,
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -20,7 +39,7 @@ export default function QuickForm() {
       <div className="flex flex-col items-center justify-center py-12 gap-4 text-center">
         <CheckCircle size={40} className="text-brand-red" />
         <p className="text-lg font-semibold text-charcoal">Request sent successfully!</p>
-        <p className="text-mid-gray text-sm">We&apos;ll get back to you within one business day.</p>
+        <p className="text-mid-gray text-sm">Check your inbox — we&apos;ll reply within one business day.</p>
       </div>
     );
   }
@@ -69,6 +88,7 @@ export default function QuickForm() {
         rows={3}
         className="px-4 py-3 rounded-lg border border-border-gray bg-white text-sm text-charcoal placeholder-mid-gray focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-colors resize-none"
       />
+      {error && <p className="text-xs text-red-500">{error}</p>}
       <button
         type="submit"
         disabled={loading}

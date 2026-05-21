@@ -104,7 +104,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
         <div className="absolute top-20 right-[5%] w-72 h-72 bg-brand-red/5 blob rounded-full pointer-events-none" />
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="max-w-3xl ml-[85px]">
+          <AnimatedSection className="max-w-3xl ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-5">What We Do</p>
             <h1 className="text-[58px] sm:text-[72px] font-black text-charcoal leading-[0.92] tracking-[-2px] mb-7">
               Everything You Need<br />to <span className="gradient-text">Build, Scale,</span><br />and Dominate.
@@ -173,7 +173,7 @@ export default function ServicesPage() {
       {/* ── Tech Stack ── */}
       <section className="py-24 bg-off-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-14 ml-[85px]">
+          <AnimatedSection className="mb-14 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Stack</p>
             <h2 className="text-4xl font-black text-charcoal tracking-tight">Technologies We Work With</h2>
           </AnimatedSection>

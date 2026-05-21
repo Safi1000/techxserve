@@ -13,12 +13,9 @@ const clients = [
   { name: "RetailX",          abbr: "RX" },
 ];
 
-function LogoItem({ name, abbr }: { name: string; abbr: string }) {
+function LogoItem({ name }: { name: string }) {
   return (
-    <div className="flex items-center gap-3 mx-6 px-5 py-3 bg-white rounded-xl border border-border-gray hover:border-brand-red/25 hover:shadow-sm transition-all duration-300 cursor-default group">
-      <span className="w-8 h-8 rounded-lg bg-brand-red/10 text-brand-red flex items-center justify-center text-[11px] font-black shrink-0">
-        {abbr}
-      </span>
+    <div className="flex items-center mx-6 px-5 py-3 bg-white rounded-xl border border-border-gray hover:border-brand-red/25 hover:shadow-sm transition-all duration-300 cursor-default group">
       <span className="text-sm font-semibold text-charcoal whitespace-nowrap group-hover:text-brand-red transition-colors">
         {name}
       </span>
@@ -32,7 +29,7 @@ export default function LogoCarousel() {
     <div className="overflow-hidden w-full select-none">
       <div className="carousel-track">
         {doubled.map((c, i) => (
-          <LogoItem key={i} name={c.name} abbr={c.abbr} />
+          <LogoItem key={i} name={c.name} />
         ))}
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ExternalLink, CheckCircle } from "lucide-react";
 
 interface Project {
@@ -142,14 +142,9 @@ function ProjectCard({
       <div className="px-6 py-5 pl-8">
         {/* Header row */}
         <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-brand-red/8 flex items-center justify-center shrink-0">
-              <span className="text-brand-red text-[12px] font-black">{project.initials}</span>
-            </div>
-            <h3 className={`font-black text-[20px] transition-colors duration-200 ${isActive ? "text-brand-red" : "text-charcoal group-hover:text-charcoal"}`}>
-              {project.name}
-            </h3>
-          </div>
+          <h3 className={`font-black text-[20px] transition-colors duration-200 ${isActive ? "text-brand-red" : "text-charcoal group-hover:text-charcoal"}`}>
+            {project.name}
+          </h3>
           <ChevronDown
             size={15}
             className={`shrink-0 mt-0.5 text-mid-gray transition-transform duration-300 ${isActive ? "rotate-180 text-brand-red" : ""}`}
@@ -175,14 +170,9 @@ function CaseStudyDetail({ project }: { project: Project }) {
 
         {/* Top bar */}
         <div className="flex items-center justify-between px-10 py-6 border-b border-border-gray bg-off-white/50">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-brand-red/8 border border-brand-red/15 flex items-center justify-center">
-              <span className="text-brand-red text-[10px] font-black">{project.initials}</span>
-            </div>
-            <p className="text-[15px] font-bold uppercase tracking-widest text-charcoal">
-              {project.name} Case Study
-            </p>
-          </div>
+          <p className="text-[15px] font-bold uppercase tracking-widest text-charcoal">
+            {project.name} Case Study
+          </p>
           <p className="text-xs text-mid-gray font-medium hidden sm:block">{project.tag}</p>
         </div>
 
@@ -270,9 +260,22 @@ function CaseStudyDetail({ project }: { project: Project }) {
 
 export default function ProductsGrid() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const detailRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   const toggle = (id: string) =>
     setActiveId((prev) => (prev === id ? null : id));
+
+  useEffect(() => {
+    if (!activeId) return;
+    const el = detailRefs.current.get(activeId);
+    if (!el) return;
+    // Wait for expand animation to start, then scroll the detail into view
+    const t = setTimeout(() => {
+      const y = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [activeId]);
 
   // Group into rows of 2
   const rows: Project[][] = [];
@@ -301,6 +304,9 @@ export default function ProductsGrid() {
 
             {/* Inline dropdown detail */}
             <div
+              ref={(el) => {
+                if (active && el) detailRefs.current.set(active.id, el);
+              }}
               className="overflow-hidden px-1 pb-10 pt-2 transition-all duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
               style={{
                 maxHeight: active ? "1000px" : "0px",
@@ -312,7 +318,7 @@ export default function ProductsGrid() {
           </div>
         );
       })}
-    
+
     </div>
   );
 }

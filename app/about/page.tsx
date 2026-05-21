@@ -36,8 +36,6 @@ const whyPoints = [
   { icon: HeartHandshake,  title: "Always On, Always Here",       desc: "Round-the-clock global support, no matter your time zone."                                      },
 ];
 
-const industries = ["Finance", "Technology", "Retail", "Logistics", "Education", "Real Estate"];
-
 const aboutStats = [
   { value: "2022", label: "Year Founded"    },
   { value: "25+",  label: "Team Members"    },
@@ -54,7 +52,7 @@ export default function AboutPage() {
 
         <div className="relative max-w-[1280px] mx-auto px-6">
           <div className="max-w-3xl">
-            <AnimatedSection className="ml-[85px]">
+            <AnimatedSection className="ml-0 sm:ml-[85px]">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-5">
                 Our Story
               </p>
@@ -120,7 +118,7 @@ export default function AboutPage() {
       {/* ── Vision & Mission ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-14 ml-[85px]">
+          <AnimatedSection className="mb-14 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Purpose</p>
             <h2 className="text-4xl md:text-5xl font-black text-charcoal tracking-tight">Vision &amp; Mission</h2>
           </AnimatedSection>
@@ -155,7 +153,7 @@ export default function AboutPage() {
       {/* ── Global Presence Map ── */}
       <section className="py-24 bg-off-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-12 ml-[85px]">
+          <AnimatedSection className="mb-12 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">
               Global Presence
             </p>
@@ -166,7 +164,7 @@ export default function AboutPage() {
               Headquartered in Sheridan, WY with a development hub in Islamabad, serving clients globally.
             </p>
           </AnimatedSection>
-          <AnimatedSection className="ml-[85px]">
+          <AnimatedSection className="ml-0 sm:ml-[85px]">
             <WorldMap />
           </AnimatedSection>
         </div>
@@ -175,7 +173,7 @@ export default function AboutPage() {
       {/* ── Core Values ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-14 ml-[85px]">
+          <AnimatedSection className="mb-14 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Values</p>
             <h2 className="text-4xl font-black text-charcoal tracking-tight">What Drives Us</h2>
           </AnimatedSection>
@@ -200,7 +198,7 @@ export default function AboutPage() {
       {/* ── How We Work ── */}
       <section className="py-24 bg-off-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-16 ml-[85px]">
+          <AnimatedSection className="mb-16 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Process</p>
             <h2 className="text-4xl font-black text-charcoal tracking-tight">How We Work</h2>
           </AnimatedSection>
@@ -221,7 +219,7 @@ export default function AboutPage() {
       {/* ── Why Choose ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="mb-14 ml-[85px]">
+          <AnimatedSection className="mb-14 ml-0 sm:ml-[85px]">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-2">Why Us</p>
             <h2 className="text-4xl font-black text-charcoal tracking-tight">Why Choose TechxServe</h2>
           </AnimatedSection>
@@ -258,24 +256,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Industries ── */}
-      <section className="py-14 bg-off-white border-y border-border-gray">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatedSection className="ml-[85px]">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-mid-gray mb-6">Industries Served</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {industries.map((ind) => (
-                <span
-                  key={ind}
-                  className="px-5 py-2.5 rounded-full border border-border-gray bg-white text-sm font-medium text-charcoal hover:border-brand-red hover:text-brand-red transition-colors cursor-default"
-                >
-                  {ind}
-                </span>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 }
