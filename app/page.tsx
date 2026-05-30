@@ -8,6 +8,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CounterStat from "@/components/CounterStat";
 import LogoCarousel from "@/components/LogoCarousel";
 import QuickForm from "@/components/QuickForm";
+import HeroWaves from "@/components/HeroWaves";
 
 export const metadata: Metadata = {
   title: "TechxServe: Tomorrow's Reality, Today.",
@@ -46,12 +47,17 @@ export default function HomePage() {
         {/* Dot pattern overlay */}
         <div className="absolute inset-0 dot-bg opacity-[0.45] pointer-events-none" />
 
-        {/* Decorative floating blobs */}
-        <div className="absolute top-20 right-[8%] w-72 h-72 rounded-full bg-brand-red/5 blob pointer-events-none" />
-        <div className="absolute bottom-24 left-[5%] w-48 h-48 rounded-full bg-brand-red/4 blob pointer-events-none" style={{ animationDelay: "3s" }} />
+        {/* Hero content area — animation bounded to this region only */}
+        <div className="relative flex-1 flex flex-col justify-center">
+          {/* Animated particles — reactive to cursor */}
+          <HeroWaves />
+
+          {/* Decorative floating blob (left side only — right side reserved for robot) */}
+          <div className="absolute bottom-24 left-[5%] w-48 h-48 rounded-full bg-brand-red/4 blob pointer-events-none" style={{ animationDelay: "3s" }} />
+
 
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-28 pb-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center">
 
             {/* ── Left: Text ── */}
             <div className="ml-0 sm:ml-[85px]">
@@ -107,52 +113,10 @@ export default function HomePage() {
               </AnimatedSection>
             </div>
 
-            {/* ── Right: Floating visual card ── */}
-            <AnimatedSection delay={200} direction="left" className="hidden lg:block">
-              <div className="relative">
-                {/* Main card */}
-                <div className="floating relative bg-white rounded-3xl border border-border-gray shadow-[var(--shadow-lg)] p-6 z-10">
-                  <div className="flex items-center justify-between mb-5">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-mid-gray">Active Projects</p>
-                      <p className="text-2xl font-black text-charcoal">12 Running</p>
-                    </div>
-                    <div className="w-10 h-10 rounded-xl bg-brand-red/8 flex items-center justify-center">
-                      <Layers size={18} className="text-brand-red" />
-                    </div>
-                  </div>
-                  {/* Mini bar chart */}
-                  <div className="flex items-end gap-1.5 h-16 mb-4">
-                    {[40, 65, 50, 80, 60, 90, 70, 100, 75, 88].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-sm transition-all"
-                        style={{
-                          height: `${h}%`,
-                          background: i === 9 ? "#CC0000" : i >= 7 ? "#ffbbbb" : "#F0F0F0",
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="flex justify-between text-[10px] text-mid-gray">
-                    <span>Jan</span><span>Mar</span><span>May</span><span>Now</span>
-                  </div>
-                </div>
-
-                {/* Floating badge 1 */}
-                <div className="floating-slow absolute -top-5 -right-5 z-20 bg-white rounded-2xl border border-border-gray shadow-[var(--shadow-md)] px-4 py-3 flex items-center gap-2.5" style={{ animationDelay: "1s" }}>
-                  <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-                    <CheckCircle size={14} className="text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-semibold text-charcoal">98% Satisfaction</p>
-                    <p className="text-[9px] text-mid-gray">Across all projects</p>
-                  </div>
-                </div>
-
-              </div>
-            </AnimatedSection>
+            {/* Right column placeholder — robot is absolutely positioned outside the grid */}
+            <div className="hidden lg:block" aria-hidden />
           </div>
+        </div>
         </div>
 
         {/* ── Trusted By carousel (in hero) ── */}

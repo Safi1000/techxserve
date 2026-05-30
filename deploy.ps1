@@ -6,7 +6,7 @@ npm run build
 if ($LASTEXITCODE -ne 0) { Write-Host "Build failed. Aborting."; exit 1 }
 
 Write-Host "Packaging..."
-tar -czf deploy.tar.gz .next public package.json package-lock.json next.config.ts
+tar --exclude='.next/dev' --exclude='.next/cache' -czf deploy.tar.gz .next public package.json package-lock.json next.config.ts
 if ($LASTEXITCODE -ne 0) { Write-Host "Packaging failed. Aborting."; exit 1 }
 
 Write-Host "Uploading..."

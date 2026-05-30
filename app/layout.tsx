@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import IntroOverlay from "@/components/IntroOverlay";
+import PersistentRobot from "@/components/PersistentRobot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,7 +43,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body className="min-h-screen flex flex-col font-sans antialiased">
+        <IntroOverlay />
         <Navbar />
+        <PersistentRobot />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

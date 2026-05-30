@@ -307,3 +307,22 @@
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Accessibility + perf: kill the continuous decorative loops for users
+   who prefer reduced motion. One-shot entrance animations still play. */
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .floating,
+  .floating-slow,
+  .badge-shimmer,
+  .carousel-track {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
