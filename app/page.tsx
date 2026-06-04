@@ -8,7 +8,6 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CounterStat from "@/components/CounterStat";
 import LogoCarousel from "@/components/LogoCarousel";
 import QuickForm from "@/components/QuickForm";
-import HeroWaves from "@/components/HeroWaves";
 
 export const metadata: Metadata = {
   title: "TechxServe: Tomorrow's Reality, Today.",
@@ -49,9 +48,6 @@ export default function HomePage() {
 
         {/* Hero content area — animation bounded to this region only */}
         <div className="relative flex-1 flex flex-col justify-center">
-          {/* Animated particles — reactive to cursor */}
-          <HeroWaves />
-
           {/* Decorative floating blob (left side only — right side reserved for robot) */}
           <div className="absolute bottom-24 left-[5%] w-48 h-48 rounded-full bg-brand-red/4 blob pointer-events-none" style={{ animationDelay: "3s" }} />
 
