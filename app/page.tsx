@@ -5,6 +5,7 @@ import {
   CheckCircle, Layers, Shield, TrendingUp, Users,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import FloatingPaths from "@/components/FloatingPaths";
 import CounterStat from "@/components/CounterStat";
 import LogoCarousel from "@/components/LogoCarousel";
 import QuickForm from "@/components/QuickForm";
@@ -42,17 +43,16 @@ export default function HomePage() {
       {/* ══════════════════════════════════
           HERO — split layout, light bg
       ══════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden mesh-bg">
-        {/* Dot pattern overlay */}
-        <div className="absolute inset-0 dot-bg opacity-[0.45] pointer-events-none" />
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white">
+        {/* Floating path lines */}
+        <FloatingPaths />
+        {/* Soft fade at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white/60 pointer-events-none z-[1]" />
 
-        {/* Hero content area — animation bounded to this region only */}
+        {/* Hero content area — pointer-events-none on wrappers so boxes receive hover */}
         <div className="relative flex-1 flex flex-col justify-center">
-          {/* Decorative floating blob (left side only — right side reserved for robot) */}
-          <div className="absolute bottom-24 left-[5%] w-48 h-48 rounded-full bg-brand-red/4 blob pointer-events-none" style={{ animationDelay: "3s" }} />
 
-
-        <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-28 pb-6">
+        <div className="relative z-[2] max-w-[1280px] mx-auto px-6 pt-28 pb-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center">
 
             {/* ── Left: Text ── */}
@@ -116,7 +116,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Trusted By carousel (in hero) ── */}
-        <div className="relative z-10 w-full border-t border-border-gray/60 mt-6 pt-8 pb-10 overflow-hidden bg-white/50 backdrop-blur-sm">
+        <div className="relative z-[2] w-full border-t border-border-gray/60 mt-6 pt-8 pb-10 overflow-hidden bg-white/80 backdrop-blur-sm">
           <div className="max-w-[1280px] mx-auto px-6 mb-5 flex items-center gap-4">
             <div className="ml-0 sm:ml-[85px] w-full flex items-center gap-4">
 

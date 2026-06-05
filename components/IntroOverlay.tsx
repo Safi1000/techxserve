@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const SESSION_KEY = "techxserve_intro_played";
 const TEXT = "TechxServe";
 const X_INDEX = 4;
-const SHOW_DURATION = 2600;
+const SHOW_DURATION = 4800;
 const EXIT_DURATION = 900;
 
 const CHAR_DELAY = 0.05;

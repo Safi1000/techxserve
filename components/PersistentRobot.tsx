@@ -27,10 +27,10 @@ export default function PersistentRobot() {
 
   return (
     <div
-      className="hidden lg:block absolute right-0 top-[190px] z-[5] w-[60%] xl:w-[58%] h-[calc(100vh-330px)] overflow-hidden transition-opacity duration-500"
+      className="hidden lg:block absolute right-0 top-[190px] z-[5] w-[75%] xl:w-[72%] h-[calc(100vh-330px)] overflow-hidden transition-opacity duration-500"
       style={{
         opacity: onHome ? 1 : 0,
-        pointerEvents: onHome ? "auto" : "none",
+        pointerEvents: "none",
       }}
     >
       {/* Inner is sized at 220% so Spline renders into a larger canvas at
@@ -42,7 +42,7 @@ export default function PersistentRobot() {
           width: "220%",
           height: "220%",
           top: 0,
-          left: "-60%",
+          left: "-45%",
           filter:
             "brightness(0.7) sepia(1) saturate(8) hue-rotate(-38deg) brightness(1.45) contrast(1.1)",
         }}

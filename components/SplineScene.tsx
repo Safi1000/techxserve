@@ -12,14 +12,11 @@ interface SplineSceneProps {
 export function SplineScene({ scene, className }: SplineSceneProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  // Forward global mouse moves into the Spline canvas so the robot tracks
-  // the cursor wherever it goes on the page, not only when it's over the canvas.
-  // Throttled to ~60fps so we don't flood Spline with redundant pointer events.
+  // Forward global mouse moves to the Spline canvas ONLY when the cursor is
+  // outside the canvas bounds. When inside, the canvas receives native events.
   useEffect(() => {
-    let lastTs = 0;
-    let pending: MouseEvent | null = null;
     let rafId = 0;
-    const THROTTLE_MS = 16;
+    let pending: MouseEvent | null = null;
 
     const flush = () => {
       rafId = 0;
@@ -28,7 +25,9 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
       pending = null;
       const canvas = wrapperRef.current?.querySelector("canvas");
       if (!canvas) return;
-      const init: MouseEventInit = {
+      // Always forward — no inside/outside check so the robot tracks
+      // everywhere on the page regardless of scroll position or overlap.
+      const init: PointerEventInit = {
         clientX: e.clientX,
         clientY: e.clientY,
         screenX: e.screenX,
@@ -36,20 +35,17 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
         bubbles: true,
         cancelable: true,
         view: window,
+        pointerType: "mouse",
+        pointerId: 1,
+        isPrimary: true,
       };
-      canvas.dispatchEvent(new MouseEvent("mousemove", init));
-      canvas.dispatchEvent(new PointerEvent("pointermove", { ...init, pointerType: "mouse" }));
+      canvas.dispatchEvent(new PointerEvent("pointermove", init));
+      canvas.dispatchEvent(new MouseEvent("mousemove", { ...init }));
     };
 
     const dispatch = (e: MouseEvent) => {
-      const now = performance.now();
       pending = e;
-      if (now - lastTs < THROTTLE_MS) {
-        if (!rafId) rafId = requestAnimationFrame(flush);
-        return;
-      }
-      lastTs = now;
-      flush();
+      if (!rafId) rafId = requestAnimationFrame(flush);
     };
 
     window.addEventListener("mousemove", dispatch, { passive: true });
@@ -60,7 +56,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="w-full h-full">
+    <div ref={wrapperRef} className="w-full h-full" style={{ pointerEvents: "auto" }}>
       <Suspense
         fallback={
           <div className="w-full h-full flex items-center justify-center">
