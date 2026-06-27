@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 export interface SelectorItem {
@@ -165,7 +165,20 @@ export default function PortfolioSelector({ items }: PortfolioSelectorProps) {
   return (
     <div>
       {/* ── Desktop: full-width expanding panels ── */}
-      <div className="hidden sm:flex w-full rounded-2xl overflow-hidden" style={{ height: "520px" }}>
+      <div className="hidden sm:block">
+      <div className="flex items-center gap-4">
+
+        {/* Left arrow */}
+        <button
+          aria-label="Previous"
+          onClick={() => setActiveIndex((i) => Math.max(0, i - 1))}
+          disabled={activeIndex === 0}
+          className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-charcoal hover:bg-charcoal/80 transition-all duration-200 disabled:opacity-20 disabled:cursor-not-allowed shadow-md"
+        >
+          <ChevronLeft size={15} className="text-white" />
+        </button>
+
+      <div className="flex-1 flex rounded-2xl overflow-hidden" style={{ height: "520px" }}>
         {items.map((item, i) => {
           const isActive = i === activeIndex;
           const isIn = entered[i];
@@ -245,6 +258,36 @@ export default function PortfolioSelector({ items }: PortfolioSelectorProps) {
           );
         })}
       </div>
+
+        {/* Right arrow */}
+        <button
+          aria-label="Next"
+          onClick={() => setActiveIndex((i) => Math.min(items.length - 1, i + 1))}
+          disabled={activeIndex === items.length - 1}
+          className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-charcoal hover:bg-charcoal/80 transition-all duration-200 disabled:opacity-20 disabled:cursor-not-allowed shadow-md"
+        >
+          <ChevronRight size={15} className="text-white" />
+        </button>
+
+      </div>{/* end arrows + slider row */}
+
+      {/* Dot indicators — centered below slider */}
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {items.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActiveIndex(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: i === activeIndex ? "20px" : "6px",
+              height: "6px",
+              background: i === activeIndex ? "var(--color-brand-red)" : "rgba(0,0,0,0.15)",
+            }}
+          />
+        ))}
+      </div>
+      </div>{/* end desktop wrapper */}
 
       {/* ── Mobile: chips + card ── */}
       <div className="sm:hidden">
