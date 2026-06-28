@@ -741,7 +741,7 @@ const MediaContactSection = () => {
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: React.ReactNode } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -793,7 +793,7 @@ const MediaContactSection = () => {
       console.error("Media email failed:", err);
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again or email us at info@techxserve.com",
+        message: <>Something went wrong. Please try again or email us at <a href="mailto:info@techxserve.com" className="underline">info@techxserve.com</a></>,
       });
     } finally {
       setSubmitting(false);

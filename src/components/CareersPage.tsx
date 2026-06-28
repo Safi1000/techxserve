@@ -883,7 +883,7 @@ const ApplicationForm = ({ isModal = false, selectedJob, onClose = () => {}, onS
 
   const [dragActive, setDragActive] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: React.ReactNode } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDrag = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -933,7 +933,7 @@ const ApplicationForm = ({ isModal = false, selectedJob, onClose = () => {}, onS
       console.error("Career email failed:", err);
       setSubmitStatus({
         type: "error",
-        message: (err as Error)?.message || "Something went wrong. Please try again or email us at info@techxserve.com",
+        message: <>Something went wrong. Please try again or email us at <a href="mailto:info@techxserve.com" className="underline">info@techxserve.com</a></>,
       });
     } finally {
       setSubmitting(false);

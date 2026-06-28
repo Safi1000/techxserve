@@ -247,7 +247,7 @@ const ContactFormSection = () => {
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: React.ReactNode } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -311,7 +311,7 @@ const ContactFormSection = () => {
       console.error("Contact email failed:", err);
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again or email us directly at info@techxserve.com",
+        message: <>Something went wrong. Please try again or email us directly at <a href="mailto:info@techxserve.com" className="underline">info@techxserve.com</a></>,
       });
     } finally {
       setSubmitting(false);
