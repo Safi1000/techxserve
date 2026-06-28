@@ -90,7 +90,7 @@ export default function HomePage() {
                     Start a Project <ArrowRight size={15} />
                   </Link>
                   <Link
-                    href="/products"
+                    href="/portfolio"
                     className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-charcoal font-semibold rounded-xl text-sm border border-border-gray hover:border-charcoal/30 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                   >
                     See Our Work
