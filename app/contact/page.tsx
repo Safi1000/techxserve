@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const contactDetails = [
   { icon: Phone,    label: "Phone",           value: "+1 (307) 293-9151",               href: "tel:+13072939151",             color: "bg-brand-red/8", iconColor: "text-brand-red" },
-  { icon: Mail,     label: "Email",            value: "info@techxserve.com",             href: "mailto:info@techxserve.com",   color: "bg-brand-red/8", iconColor: "text-brand-red" },
+  { icon: Mail,     label: "Email",            value: "info@techxserve.com",             href: "mailto:techxserve@gmail.com",  color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: Globe,    label: "Website",          value: "www.techxserve.com",              href: null,                           color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: MapPin,   label: "Headquarters",     value: "30 N Gould St Ste N\nSheridan, WY 82801, USA", href: null,            color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: MapPin,   label: "Development HQ",   value: "Islamabad, Pakistan",             href: null,                           color: "bg-brand-red/8", iconColor: "text-brand-red" },
