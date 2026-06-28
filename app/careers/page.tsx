@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Rocket, Crown, Globe } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import CareerAccordion from "@/components/CareerAccordion";
+import CareersInteractive from "@/components/CareersInteractive";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -88,7 +88,7 @@ export default function CareersPage() {
             </div>
           </AnimatedSection>
           <AnimatedSection>
-            <CareerAccordion />
+            <CareersInteractive />
           </AnimatedSection>
         </div>
       </section>

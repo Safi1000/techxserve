@@ -59,31 +59,42 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
-                  {contactDetails.map((d) => (
-                    <div
-                      key={d.label}
-                      className="flex items-start gap-3.5 p-4 rounded-2xl bg-off-white border border-border-gray hover:border-brand-red/20 hover:shadow-sm transition-all duration-200"
-                    >
-                      <div className={`w-9 h-9 rounded-xl ${d.color} flex items-center justify-center shrink-0`}>
-                        <d.icon size={15} className={d.iconColor} />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-mid-gray mb-0.5">
-                          {d.label}
-                        </p>
-                        {d.href ? (
-                          <a
-                            href={d.href}
-                            className="text-charcoal text-sm font-medium hover:text-brand-red transition-colors leading-snug block whitespace-pre-line"
-                          >
+                  {contactDetails.map((d) =>
+                    d.href ? (
+                      <a
+                        key={d.label}
+                        href={d.href}
+                        className="flex items-start gap-3.5 p-4 rounded-2xl bg-off-white border border-border-gray hover:border-brand-red/20 hover:shadow-sm transition-all duration-200"
+                      >
+                        <div className={`w-9 h-9 rounded-xl ${d.color} flex items-center justify-center shrink-0`}>
+                          <d.icon size={15} className={d.iconColor} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] font-semibold uppercase tracking-wider text-mid-gray mb-0.5">
+                            {d.label}
+                          </p>
+                          <span className="text-charcoal text-sm font-medium hover:text-brand-red transition-colors leading-snug block whitespace-pre-line">
                             {d.value}
-                          </a>
-                        ) : (
+                          </span>
+                        </div>
+                      </a>
+                    ) : (
+                      <div
+                        key={d.label}
+                        className="flex items-start gap-3.5 p-4 rounded-2xl bg-off-white border border-border-gray"
+                      >
+                        <div className={`w-9 h-9 rounded-xl ${d.color} flex items-center justify-center shrink-0`}>
+                          <d.icon size={15} className={d.iconColor} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[10px] font-semibold uppercase tracking-wider text-mid-gray mb-0.5">
+                            {d.label}
+                          </p>
                           <p className="text-charcoal text-sm font-medium leading-snug whitespace-pre-line">{d.value}</p>
-                        )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
 
                 {/* Social */}

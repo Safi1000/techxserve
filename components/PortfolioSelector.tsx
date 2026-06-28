@@ -186,7 +186,7 @@ export default function PortfolioSelector({ items }: PortfolioSelectorProps) {
             <div
               key={item.id}
               onClick={() => i !== activeIndex && setActiveIndex(i)}
-              className="relative flex flex-col justify-end overflow-hidden cursor-pointer"
+              className={`relative flex flex-col justify-end overflow-hidden ${isActive ? "cursor-default" : "cursor-pointer"}`}
               style={{
                 background: item.gradient,
                 flex: isActive ? "7 1 0%" : "1 1 0%",

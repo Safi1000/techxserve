@@ -79,7 +79,7 @@ const roles: Role[] = [
   },
 ];
 
-function RoleItem({ role }: { role: Role }) {
+function RoleItem({ role, onApply }: { role: Role; onApply: (title: string) => void }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -126,23 +126,24 @@ function RoleItem({ role }: { role: Role }) {
               </li>
             ))}
           </ul>
-          <a
-            href={`mailto:careers@techxserve.com?subject=Application: ${encodeURIComponent(role.title)}`}
+          <button
+            type="button"
+            onClick={() => onApply(role.title)}
             className="inline-flex items-center px-5 py-2.5 bg-brand-red text-white text-sm font-semibold rounded-lg hover:bg-brand-red-dark transition-colors"
           >
             Apply Now
-          </a>
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default function CareerAccordion() {
+export default function CareerAccordion({ onApply }: { onApply: (title: string) => void }) {
   return (
     <div className="space-y-4">
       {roles.map((role) => (
-        <RoleItem key={role.title} role={role} />
+        <RoleItem key={role.title} role={role} onApply={onApply} />
       ))}
     </div>
   );

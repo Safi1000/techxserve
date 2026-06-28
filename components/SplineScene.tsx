@@ -56,7 +56,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="w-full h-full" style={{ pointerEvents: "auto" }}>
+    <div ref={wrapperRef} className="w-full h-full" style={{ pointerEvents: "none" }}>
       <Suspense
         fallback={
           <div className="w-full h-full flex items-center justify-center">
@@ -64,7 +64,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
           </div>
         }
       >
-        <Spline scene={scene} className={className} />
+        <Spline scene={scene} className={className} style={{ pointerEvents: "none" }} />
       </Suspense>
     </div>
   );
