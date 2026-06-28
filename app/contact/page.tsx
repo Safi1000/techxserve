@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const contactDetails = [
   { icon: Phone,    label: "Phone",           value: "+1 (307) 293-9151",               href: "tel:+13072939151",             color: "bg-brand-red/8", iconColor: "text-brand-red" },
-  { icon: Mail,     label: "Email",            value: "info@techxserve.com",             href: "mailto:techxserve@gmail.com",  color: "bg-brand-red/8", iconColor: "text-brand-red" },
+  { icon: Mail,     label: "Email",            value: "info@techxserve.com",             href: "https://mail.google.com/mail/?view=cm&fs=1&to=techxserve@gmail.com", color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: Globe,    label: "Website",          value: "www.techxserve.com",              href: null,                           color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: MapPin,   label: "Headquarters",     value: "30 N Gould St Ste N\nSheridan, WY 82801, USA", href: null,            color: "bg-brand-red/8", iconColor: "text-brand-red" },
   { icon: MapPin,   label: "Development HQ",   value: "Islamabad, Pakistan",             href: null,                           color: "bg-brand-red/8", iconColor: "text-brand-red" },
@@ -64,6 +64,8 @@ export default function ContactPage() {
                       <a
                         key={d.label}
                         href={d.href}
+                        target={d.href.startsWith("http") ? "_blank" : undefined}
+                        rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         className="flex items-start gap-3.5 p-4 rounded-2xl bg-off-white border border-border-gray hover:border-brand-red/20 hover:shadow-sm transition-all duration-200"
                       >
                         <div className={`w-9 h-9 rounded-xl ${d.color} flex items-center justify-center shrink-0`}>

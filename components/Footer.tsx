@@ -34,7 +34,7 @@ export default function Footer() {
               <a href="tel:+13072939151" className="flex items-center gap-2 text-[#a1a1aa] text-xs hover:text-white transition-colors">
                 <Phone size={12} className="text-brand-red" />+1 (307) 293-9151
               </a>
-              <a href="mailto:techxserve@gmail.com" className="flex items-center gap-2 text-[#a1a1aa] text-xs hover:text-white transition-colors">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=techxserve@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#a1a1aa] text-xs hover:text-white transition-colors">
                 <Mail size={12} className="text-brand-red" />info@techxserve.com
               </a>
               <span className="flex items-center gap-2 text-[#a1a1aa] text-xs">
