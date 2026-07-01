@@ -226,6 +226,12 @@ const productsItems: SelectorItem[] = [
       "Role-based access control",
       "Statutory reporting & tax support",
     ],
+    screenshots: [
+      "/portfolio/bespoke-crm/bespoke_dashboard.png",
+      "/portfolio/bespoke-crm/bespoke_expenses.png",
+      "/portfolio/bespoke-crm/bespoke_invoices.png",
+      "/portfolio/bespoke-crm/bespoke_requisitions.png",
+    ],
     cta: { label: "Request a Demo", href: "/contact" },
     gradient: "linear-gradient(135deg, #1c0000 0%, #3d0000 55%, #0f0000 100%)",
     iconBg: "rgba(204,0,0,0.4)",
