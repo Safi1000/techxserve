@@ -1,6 +1,12 @@
 "use client";
 
-import { Suspense, lazy, useEffect, useRef } from "react";
+import { Suspense, lazy, useEffect, useRef, Component, ReactNode } from "react";
+
+class SplineErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? null : this.props.children; }
+}
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
@@ -57,15 +63,11 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 
   return (
     <div ref={wrapperRef} className="w-full h-full" style={{ pointerEvents: "none" }}>
-      <Suspense
-        fallback={
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="w-8 h-8 border-2 border-brand-red border-t-transparent rounded-full animate-spin" />
-          </div>
-        }
-      >
-        <Spline scene={scene} className={className} style={{ pointerEvents: "none" }} />
-      </Suspense>
+      <SplineErrorBoundary>
+        <Suspense fallback={null}>
+          <Spline scene={scene} className={className} style={{ pointerEvents: "none" }} />
+        </Suspense>
+      </SplineErrorBoundary>
     </div>
   );
 }

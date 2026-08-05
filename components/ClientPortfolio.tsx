@@ -4,7 +4,8 @@ import {
   Database, Shield, Gamepad2, Truck, Building2,
   LayoutDashboard, GraduationCap, BookOpen, Target, Briefcase,
 } from "lucide-react";
-import PortfolioSelector, { type SelectorItem } from "./PortfolioSelector";
+import { type SelectorItem } from "./PortfolioSelector";
+import PortfolioSelector from "./PortfolioSelector";
 
 // ─── Our Works ────────────────────────────────────────────────────────────────
 
@@ -179,6 +180,9 @@ const productsItems: SelectorItem[] = [
       "/portfolio/workforce-crm/2.PNG",
       "/portfolio/workforce-crm/3.PNG",
       "/portfolio/workforce-crm/4.PNG",
+      "/portfolio/workforce-crm/5.PNG",
+      "/portfolio/workforce-crm/6.PNG",
+      "/portfolio/workforce-crm/7.PNG",
     ],
     cta: { label: "Request a Demo", href: "/contact" },
     gradient: "linear-gradient(135deg, #080d18 0%, #111d33 55%, #050810 100%)",
@@ -272,40 +276,38 @@ export default function ClientPortfolio() {
       {/* ── Our Products ── */}
       <section className="pt-4 pb-24 bg-white relative overflow-hidden">
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <div className="ml-0 sm:ml-[85px]">
-            <div className="mb-8">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-3">
-                What We Sell
-              </p>
-              <h2 className="text-4xl md:text-5xl font-black text-charcoal tracking-tight leading-tight mb-4">
-                Our Products
-              </h2>
-              <p className="text-mid-gray text-lg max-w-xl">
-                Software products built and owned by TechxServe — available off-the-shelf or customized for your business.
-              </p>
-            </div>
-            <PortfolioSelector items={productsItems} />
+          {/* Header — offset to match page rhythm */}
+          <div className="ml-0 sm:ml-[85px] mb-10">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-3">
+              What We Sell
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-charcoal tracking-tight leading-tight mb-4">
+              Our Products
+            </h2>
+            <p className="text-mid-gray text-lg max-w-xl">
+              Software products built and owned by TechxServe — available off-the-shelf or customized for your business.
+            </p>
           </div>
+          <PortfolioSelector items={productsItems} />
         </div>
       </section>
 
       {/* ── Our Works ── */}
       <section className="py-24 bg-off-white relative overflow-hidden">
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <div className="ml-0 sm:ml-[85px]">
-            <div className="mb-8">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-3">
-                Client Work
-              </p>
-              <h2 className="text-4xl md:text-5xl font-black text-charcoal tracking-tight leading-tight mb-4">
-                Our Works
-              </h2>
-              <p className="text-mid-gray text-lg max-w-xl">
-                Every project we take on is a problem we&apos;re determined to solve. Here&apos;s what we&apos;ve shipped for clients.
-              </p>
-            </div>
-            <PortfolioSelector items={worksItems} />
+          {/* Header */}
+          <div className="ml-0 sm:ml-[85px] mb-10">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-red mb-3">
+              Client Work
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-charcoal tracking-tight leading-tight mb-4">
+              Our Works
+            </h2>
+            <p className="text-mid-gray text-lg max-w-xl">
+              Every project we take on is a problem we&apos;re determined to solve. Here&apos;s what we&apos;ve shipped for clients.
+            </p>
           </div>
+          <PortfolioSelector items={worksItems} />
         </div>
       </section>
     </>
