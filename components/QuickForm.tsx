@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { CheckCircle } from "lucide-react";
+import { trackEvent } from "@/lib/gtag";
 
 export default function QuickForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -26,6 +27,10 @@ export default function QuickForm() {
         }),
       });
       if (!res.ok) throw new Error("send failed");
+      trackEvent("generate_lead", {
+        form_name: "quick_form",
+        service: String(fd.get("service") || "unspecified"),
+      });
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");

@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { CheckCircle } from "lucide-react";
+import { trackEvent } from "@/lib/gtag";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -28,6 +29,11 @@ export default function ContactForm() {
         }),
       });
       if (!res.ok) throw new Error("send failed");
+      trackEvent("generate_lead", {
+        form_name: "contact",
+        service: String(fd.get("service") || "unspecified"),
+        budget: String(fd.get("budget") || "unspecified"),
+      });
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");

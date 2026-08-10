@@ -162,7 +162,7 @@ const productsItems: SelectorItem[] = [
   },
   {
     id: "workforce-crm",
-    title: "Workforce CRM",
+    title: "Bastion",
     subtitle: "HR · Payroll · Operations",
     tagline: "From hire to payslip — every operation in one place.",
     overview:

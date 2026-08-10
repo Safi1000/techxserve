@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { CheckCircle, Send } from "lucide-react";
+import { trackEvent } from "@/lib/gtag";
 
 const inputClass =
   "px-4 py-3 rounded-xl border border-border-gray bg-off-white text-sm text-charcoal placeholder-mid-gray " +
@@ -40,6 +41,9 @@ export default function CareerForm({ role = "" }: { role?: string }) {
         }),
       });
       if (!res.ok) throw new Error("send failed");
+      trackEvent("job_application_submitted", {
+        position: String(fd.get("position") || "unspecified"),
+      });
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");
